@@ -4,7 +4,7 @@
 
   float startpointx, startpointy, thetaX, thetaY, thetaZ;
   
-  public void settings() {    
+  public void setup() {    
     size(800, 800);
     startpointx = width/2; startpointy = height/2;
     thetaX = 0;
