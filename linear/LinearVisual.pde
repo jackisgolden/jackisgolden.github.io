@@ -26,7 +26,7 @@
     {
       s += "| ";
       for(int j = 0; j < mat.length; j++)
-        s+= "" + (mat[i][j]) + ", ";
+        s+= "" + (mat[i][j]) + " ";
       s+= "|\n";
     }
     //text(s, width/2, height/8);
