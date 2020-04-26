@@ -34,7 +34,7 @@
   NoteSet guitar = new NoteSet(guitarN, "Guitar");
   NoteSet bass = new NoteSet(bassN, "Bass");
   NoteSet ukulele = new NoteSet(ukeN, "Ukulele");
-  NoteSet banjo = new NoteSet{bassN, "Banjo"};
+  NoteSet banjo = new NoteSet(banjoN, "Banjo");
   NoteSet linnstrument = new NoteSet(linnstrN, "Linnstrument");
   NoteSet harpejji = new NoteSet(harpejjN, "Harpejji");
 
