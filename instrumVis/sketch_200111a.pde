@@ -27,14 +27,14 @@
   int[] ukeN = { 5, 0, 8, 3 };
   int[] bassN = { 3, 10, 5, 0 };
   int[] guitarN = { 0, 7, 3, 10, 5, 0 }; // in reverse order because processing renders positive y downwards
-  int[] bassN = {3, 10 ,3, 7, 10};
+  int[] banjoN = {3, 10 ,3, 7, 10};
   int[] linnstrN= {0, 5, 10, 3, 8, 1, 6, 11};      //has 25 columns to play
   int[] harpejjN = { 5, 7, 9, 11, 1, 3, 5, 7, 9, 11, 1, 3, 5, 7, 9, 11, 1, 3, 5, 7, 9,11, 1, 3};
 
   NoteSet guitar = new NoteSet(guitarN, "Guitar");
   NoteSet bass = new NoteSet(bassN, "Bass");
   NoteSet ukulele = new NoteSet(ukeN, "Ukulele");
-  NoteSet bass = new NoteSet{bassN, "Banjo"};
+  NoteSet banjo = new NoteSet{bassN, "Banjo"};
   NoteSet linnstrument = new NoteSet(linnstrN, "Linnstrument");
   NoteSet harpejji = new NoteSet(harpejjN, "Harpejji");
 
