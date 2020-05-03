@@ -184,14 +184,16 @@
   }
 
   public void modulate(){
-    for(int i = 0; i < notes.length; i++)
-    {
+    mode = (mode - 1 + 7)%7;
+    
+    int shift = notes[notes.length - 1];
+    for(int i = notes.length - 1; i > 0; i--)
+    {  
       int temp = notes[i];
-      notes[i] = notes[(i + 1) % 12];
-      notes[(i + 1) % 12] = temp;
-
-      notes[i] = (notes[i] - notes[0]) % 12;
+      notes[i] = notes[i - 1];
+      notes[i - 1] = temp;
     }
-
+    for(int i = 0; i < notes.length; i++)
+      notes[i] =  Math.abs((notes[i] - shift + 12) % 12);
   }
 }

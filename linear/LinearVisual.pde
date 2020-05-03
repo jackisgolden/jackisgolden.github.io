@@ -3,20 +3,21 @@
   float[][] mat = {{20,0,0,0},{0,20,0,0},{0,0,20,0}, {0,0,0,1}};
 
   float startpointx, startpointy, thetaX, thetaY, thetaZ;
+  float x, y;
   
   public void setup() {    
     size(800, 800);
     startpointx = width/2; startpointy = height/2;
-    thetaX = 0;
   }
-
-  //public void setup() {
-  //}
 
   public void draw() {        //don't know where else to put this, but in order for transformations to look better there needs to be a stack of matrices to transform and untransform
     background(0);            //order (right to left of matrix) should be scale, rotate, translate, render
     displayText();
-    //transform();
+    x += .01;
+    y += .01;
+    mat = rotateMatX(mat, map(noise(x,y),0,1,-.04,.04));
+    mat = rotateMatY(mat, map(noise(y + 30, x + 30),0,1,-.04,.04));
+    mat = rotateMatZ(mat, map(noise(x - 30,y - 30),0,1,-.04,.04));
     renderGraph();
   }
   public void displayText()
@@ -55,7 +56,7 @@
            //float[][] projPerspective = {{20,0,0,0},{0,20,0,0},{0,0,(k+ 20)/(20- k), 2*k*20/(20-k)},{0,0, -1, 0}}; //3,2 is our divide factor
            //points = matMult(projPerspective, points);
            
-           stroke(255);
+           stroke(185,103,255);
            for(int line = 1; line < points.length ; line++)
              if(line == 1 && i !=dim || line == 2 && j != dim || line == 3 && k != dim)
              {
@@ -94,16 +95,16 @@
                     product[i][j] += mat1[i][k] * mat2[k][j];
     return product;
   }
-  public float[] matMult(float[][] mat1, float[] mat2) //Ax = B
-  {
-    if(mat1[0].length != mat2.length)
-      System.out.println("invalid DIM");
-      float[] product = new float[mat2.length];
-      for(int i = 0; i < product.length; i++)
-        for(int j = 0; j < mat1[0].length; j++)
-          product[i] += mat1[i][j] * mat2[i];
-    return product;
-  }
+  // public float[] matMult(float[][] mat1, float[] mat2) //Ax = B
+  // {
+  //   if(mat1[0].length != mat2.length)
+  //     //sSystem.out.println("invalid DIM");
+  //     float[] product = new float[mat2.length];
+  //     for(int i = 0; i < product.length; i++)
+  //       for(int j = 0; j < mat1[0].length; j++)
+  //         product[i] += mat1[i][j] * mat2[i];
+  //   return product;
+  // }
   
   public float[][] matTranspose(float[][]mat1)
   {
@@ -114,10 +115,10 @@
     return transposed;
   }
   
-  public float[][] rotateMatZ(float theta)
+  public float[][] rotateMatZ(float[][] m, float theta)
   {
     float[][] rotMat = {{cos(theta),sin(theta) * -1, 0,0},{sin(theta), cos(theta), 0,0},{0, 0, 1,0},{0,0,0,1}};
-    return matMult(rotMat, mat);
+    return matMult(rotMat, m);
   }
   
     public float[][] rotateMatX(float[][] m, float theta)
@@ -142,9 +143,9 @@
       mat = m;
     }
     else if(keyCode == LEFT)
-      mat = rotateMatZ(0.04);
+      mat = rotateMatZ(mat, 0.04);
     else if(keyCode == RIGHT)
-       mat = rotateMatZ(-.04);
+       mat = rotateMatZ(mat, -.04);
     else if(keyCode == UP)
       mat = rotateMatX(mat, .04);
     else if(keyCode == DOWN)
@@ -173,8 +174,8 @@
         }
      else if(key == 'i')
          mat = invertMat(mat);
-     else if(key == 'v') //det
-         System.out.println(detMat(mat) + "");
+    // else if(key == 'v') //det
+        // System.out.println(detMat(mat) + "");
   }
   
   public float[][] translateMat(float[][] m, float dx, float dy, float dz)
@@ -319,4 +320,18 @@ static void subtractRows(float [][] m, float scalar, int subtract_scalar_times_t
 {
     for(int c1 = 0; c1 < m[0].length; c1++)
         m[from_this_row][c1] -= scalar * m[subtract_scalar_times_this_row][c1];
+}
+
+class Matrix{
+  private float[][] m;
+  public Matrix()
+  {
+    m = new float[4][4];
+    for(int i = 0; i < m.length; i++)
+      for(int j = 0; j < m[0].length; j++)
+        if(i == j) 
+          m[i][j] = 20;
+        else
+          m[i][j] = 0;
+  }
 }
