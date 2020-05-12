@@ -48,7 +48,7 @@
 
 
   public void setup() {
-        size(1400, 800);   //1200, 600
+        size(1200, 800);   //1200, 600
     nFrets = 23;
     startpointx = width / 12;
     startpointy = height / 4;
