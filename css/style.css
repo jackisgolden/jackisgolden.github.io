@@ -10,11 +10,22 @@ body{
 }
 #header{
     background-color: #c0cfb2;
+    padding: 5px;
     color: white;
     text-align: center;
 }
 #content{
     padding: 10px;
+}
+#codeSketch{
+    margin: 10px;
+    display: flex;
+  
+    /* This centers our sketch horizontally. */
+    justify-content: center;
+  
+    /* This centers our sketch vertically. */
+    align-items: center;
 }
 #footer{
     background-color: #999999;

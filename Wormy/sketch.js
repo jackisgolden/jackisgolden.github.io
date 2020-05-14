@@ -3,14 +3,15 @@ let xincrement = 0.01;
 let p = 0;
 
 function setup() {
-  createCanvas(1440, 360);
+  let canvas = createCanvas(1200, 360);
+  canvas.parent('codeSketch');
   background(255);
   noStroke();
   frameRate(30);
 }
 
 function draw() {
-  background(100, 251, 255, 5);
+  background(80,154,85,5);
   //var n = random(0,width);  // Try this line instead of noise
   let n = noise(xoff);
 

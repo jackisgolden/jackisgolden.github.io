@@ -17,18 +17,30 @@ function draw(){
 
 class Matrix{
     constructor(){
-        this.mat = [[20, 0, 0], [0, 20, 0], [0, 0, 20]];
+        this.mat = new Array(3);
+        for(let r = 0; r < 3; r++){
+            this.mat[r] = new Array(3);
+            for(let c = 0; c < 3; c++)
+                this.mat[r][c] = r == c ? 20 : 0;
+        }
         this.x = 0; 
         this.y = 0;
     }
     display()
     {
         let dim = 3;
+        
         for(let i = -1 * dim; i  <= dim; i++)
             for(let j = -1 * dim; j <= dim; j++)
                 for(let k = -1 * dim; k <= dim; k++)
                 {
                     let points = [[i, i + 1, i, i], [j, j, j + 1, j, 0], [k, k, k, k, k + 1], [0, 0, 0, 0]];
+                    let points = new Array(3);
+                    for(let r = 0; r < 3; r++){
+                        points[r] = new Array(3);
+                        for(let c = 0; c < 3; c++)
+                            points[r][c] = r == c ? 20 : 0;
+                    }
                     points = matMult
 
                     let n = 2; let r = width; let t = height;
