@@ -61,7 +61,7 @@
   }
 
   public void draw() {
-    background(0);
+    background(255);
     renderStrings();
     renderText();
     renderNotes();
@@ -87,8 +87,8 @@
   }
 
   public void renderStrings() {
-    fill(255);
-    stroke(255);
+    fill(0);
+    stroke(0);
     for (int string = 0; string < instruments[instrument].getLength(); string++) {
       int ycord = startpointy + string * lengthy / (instruments[instrument].getLength() - 1);
       line(startpointx, ycord, startpointx + lengthx, ycord);
@@ -118,7 +118,7 @@
 
   public void renderText() {
     textAlign(CENTER, CENTER);
-    fill(255);
+    fill(0);
     textSize(20);
     for (int string = 0; string < instruments[instrument].getLength(); string++) {
       int ycord = startpointy + string * lengthy / (instruments[instrument].getLength() - 1);
