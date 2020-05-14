@@ -110,7 +110,7 @@
     for (int u : markings) {
       int xcord = startpointx + (u - 1) * lengthx / (nFrets - 1) + lengthx / (nFrets * 2);
       noStroke();
-      fill(255);
+      fill(0);
       ellipse(xcord, ycord, 5, 20);
     }
     stroke(1);
