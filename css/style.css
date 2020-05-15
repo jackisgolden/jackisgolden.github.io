@@ -39,3 +39,11 @@ h2{
 canvas{
    align-content: center;
 }
+li{
+    font-weight: 100;
+    line-height: 1.5;
+    font-size: 1.5rem;
+}
+a:link{ color: #c0cfb2;}
+a:hover{ color: #44624a;}
+a:visited{color: #c0cfb2;}
