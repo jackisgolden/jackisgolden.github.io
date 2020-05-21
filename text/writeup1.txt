@@ -1,0 +1,33 @@
+﻿Linear Algebra Program Write Up
+
+
+I started working on this project because I really wanted to see if I could put 3 dimensions onto a screen. Back in February, I was learning different types of perspectives in art class. I wondered how I would put these ideas into code, so I got on my computer and started coding. Here’s how it went:
+
+
+The first thing I had to do was create a two-dimensional graph. I struggled for a while trying to  figure out the best way to go about doing this. I didn’t want to just draw a bunch of perpendicular lines because this, while looking like a graph, wouldn’t have the true nature of a graph–how would I scale it, rotate it, or skew it? How would I plot each point on this graph? I realized that I needed to incorporate the idea of the unit vectors into the creation of the graph in order to get something that would suit the goal of the program. The final version of the 2D graph renderer algorithm is as follows
+      for(int i = -10; i <= 10; i++)            //2D RENDER
+        for(int j = -10; j <= 10; j++)
+        {
+           float[][] points = {{i,j,1},{ i + 1, j, 1}, { i,  j + 1, 1}};
+           points = matTranspose(points);
+           points = matMult(mat, points);
+           
+           stroke(255);
+           for(int line = 1; line < points.length ; line++)
+             if(line == 1 && i !=10 || line == 2 && j != 10)
+             {
+               if(j == 0 && i == 0)
+                 stroke(line == 1 ? 255 : 0, line == 2 ? 255: 0, 0);
+              line(startpointx + points[0][0], startpointy - points[1][0], startpointx + points[0][line], startpointy - points[1][line]);
+             }
+      }
+
+
+Basically it boils down to the following  process:
+For each combination (let’s call it P) of i and j ranging from -10  and 10, draw a line connecting P and  P + i, and another line connecting P and P + j. That’s it. Then there are some minor things we need to keep in mind for aesthetic reasons eg. drawing the unit vectors as different colors.
+
+
+Now that I had put the essence of a graph into code, it was time to see if I could perform linear transformations on it. First I had to define an algorithm for matrix multiplication. I won’t show that chunk of code to you because we all know how to do matrix multiplication. I multiplied the points matrix by a rotation matrix and voila, it worked.
+
+
+Stay tuned for part 2 which will include how I introduced this program to the 3rd dimension!
