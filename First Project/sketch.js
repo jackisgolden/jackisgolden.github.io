@@ -47,9 +47,9 @@ class Mover {
     }
 
     if (this.position.y + 24 > height) {
-      this.velocity.y *= -1;
+      this.velocity.y *= -.99;
     } else if (this.position.y - 24 < 0) {
-      this.velocity.y *= -1;
+      this.velocity.y *= -.99;
     }
   }
 }
