@@ -3,7 +3,7 @@ float y;
 float t;
 float h;
 public void setup(){
-  size(100,100);
+  size(150,100);
   background(0);
   colorMode(HSB, 360, 100, 100);
   x = random(100);
@@ -15,15 +15,15 @@ public void setup(){
 
 public void draw(){
   background(0);
-  x += .1;
-  y += .1;
+  //x += .1;
+  //y += .1;
   t += .05;
-  h += 5;
+  //h += 2;
   for(float i = 0; i < height; i++)
     for(float j = 0; j < width; j++)
      {
-       float hue = (map(noise(i / 20 + x, j / 20 + y, t), 0, 1, 0, 360) + h) % 360;
-       stroke(hue, 100, 100);
-       point(i, j);
+       float hue = (map(noise(j / 20 + x, i / 20 + y, t), 0, 1, 0, 360) + h) % 360;
+       stroke(hue, 80, 90);
+       point(j, i);
      }
 }
