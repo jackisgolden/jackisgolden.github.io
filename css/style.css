@@ -14,6 +14,12 @@ body{
     color: white;
     text-align: center;
 }
+#nav_bar{
+    background-color: #c0cfb2;
+    padding: 2px;
+    color: white;
+    text-align: center;
+}
 #content{
     padding: 10px;
 }
@@ -36,14 +42,33 @@ body{
 h2{
     color: #44624a;
 }
-canvas{
-   align-content: center;
-}
-li{
+#content nav li{
     font-weight: 100;
     line-height: 1.5;
     font-size: 1.5rem;
 }
-a:link{ color: #c0cfb2;}
-a:hover{ color: #44624a;}
-a:visited{color: #c0cfb2;}
+#content nav li a:link{ color: #4abd2d;}
+#content nav li a:hover{ color: #44624a;}
+#content nav li a:visited{color: #c0cfb2;}
+#content nav li a.nav_bar:link{
+    color: black;
+}
+#nav_bar ul
+{
+    width: auto;
+}
+#nav_bar li{
+    display: inline-block;
+    padding: 0 15px;
+    text-transform: uppercase;
+}
+#nav_bar li a{
+    text-decoration: none;
+    color: white;
+}
+#nav_bar li a:hover{
+    color:rgb(54, 30, 30);
+}
+#selected li a{
+    color: #eb9b34;
+}
