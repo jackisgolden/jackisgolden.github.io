@@ -18,7 +18,7 @@ public void draw(){
   //x += .1;
   //y += .1;
   t += .05;
-  //h += 2;
+  h += .1;
   for(float i = 0; i < height; i++)
     for(float j = 0; j < width; j++)
      {
