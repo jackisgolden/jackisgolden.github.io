@@ -5,7 +5,9 @@
   int[] majorp = { 0, 2, 5, 7, 9 }; // these are rootless shapes. shift to align with different roots on guitar..
   int[] majorc = { 0, 4, 7 };
   int[] minorc = { 0, 3, 7 };
+  int[] chromatics = {0,1,2,3,4,5,6,7,8,9,10,11};
   int[] root = { 0 };
+  int[] ionians = { 0, 2, 4, 5, 7, 9, 11 };
 
   NoteSet majorScale = new NoteSet(majors, "Major Scale");
   NoteSet minorScale = new NoteSet(minors, "Minor Scale");
@@ -13,12 +15,10 @@
   NoteSet minorPent = new NoteSet(minorp, "Minor Pentatonic");
   NoteSet majorChord = new NoteSet(majorc, "Major Chord");
   NoteSet minorChord = new NoteSet(minorc, "Minor Chord");
+  NoteSet chromaticScale = new NoteSet(chromatics, "Chromatic scale");
+  NoteSet ionian =  new NoteSet(ionians, "Ionian");
 
-  int[] dorianp = {0, 2, 4, 5, 7, 9, 11};
-
-  NoteSet Dorian = new NoteSet();
-
-  NoteSet[] scales = { majorScale, minorScale, majorPent, minorPent, majorChord, minorChord };
+  NoteSet[] scales = { majorScale, minorScale, majorPent, minorPent, majorChord, minorChord, chromaticScale, ionian};
   String[] allNotes = { "E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D", "D#" };
 
   int scale = 0; // ************CHOOSE YOUR SCALE**********************
@@ -46,9 +46,10 @@
   String[] modes = {"Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian"};
   int mode = 0;
 
+  boolean rainbowMode = false;
 
   public void setup() {
-        size(1200, 800);   //1200, 600
+    size(1200, 800);   //1200, 600
     nFrets = 23;
     startpointx = width / 12;
     startpointy = height / 4;
@@ -70,20 +71,21 @@
   public void keyPressed() {
     if (key == 'i') // switch instrument
       instrument = (instrument + 1) % instruments.length;
-    else if (key == 's') // switch scale
-      scale = (scale + 1) % scales.length;
-    else if(key == 'm'){ //modulate
-      mode = (mode + 1) % modes.length;
-
-    }
+    else if (key == 's' && scale != scales.length - 1) // switch scale
+      scale = (scale + 1) % (scales.length - 1);  //we want to exclude the ionian mode
+    else if(key == 'r')
+      rainbowMode = !rainbowMode;
+    else if(key == 'm')
+      scale = scale == (scales.length - 1) ? 0 : scales.length - 1;
     else if (key == CODED) // left right arrow keys move KEY of song
       if (keyCode == LEFT)
         keyRoot = (keyRoot + 1) % 12;
       else if (keyCode == RIGHT)
-        if (keyRoot == 0)
-          keyRoot = 11;
-        else
-          keyRoot = (keyRoot - 1) % 12; // fix this
+          keyRoot = (keyRoot - 1 + 12) % 12; 
+      else if (keyCode == UP && scale == scales.length -  1)
+        scales[scale].modulate(true);
+      else if (keyCode == DOWN && scale == scales.length -  1)
+        scales[scale].modulate(false);
   }
 
   public void renderStrings() {
@@ -127,27 +129,35 @@
     }
     textSize(20);
     text("Instrument: " + instruments[instrument], 100, 20);
+    text((scale == scales.length - 1 ? "Modes" : "Scales") + " Active", 1100, 20);
 
     textSize(40);
     text(allNotes[(12 - keyRoot) % 12] + " " + scales[scale], width / 2, height / 8);
   }
 
   public void renderNotes() {
-    for (int string = 0; string < instruments[instrument].getLength(); string++) // note is given by (fret +
-                                            // stringNote + keyRoot) % 12
+    for (int string = 0; string < instruments[instrument].getLength(); string++)
       for (int fret = 0; fret < nFrets; fret++)
         if (scales[scale].containsNote((instruments[instrument].get(string) + fret + keyRoot) % 12)) {
           int xcord = startpointx + (fret - 1)* lengthx / (nFrets - 1) + lengthx / (nFrets * 2);
           int ycord = startpointy + string * lengthy / (instruments[instrument].getLength() - 1);
           int opacity = fret == 0 ? 100 : 255;
-          fill(200, 200, 200, opacity);
-          if (xcord < mouseX + 2 * lengthx / nFrets && xcord > mouseX - 3 * lengthx / nFrets
-              && mouseY < startpointy + lengthy && mouseY > startpointy) // mouse must be inside fret
-                                            // board
-            fill(0, 255, 0, opacity);
-          if ((fret + instruments[instrument].get(string) + keyRoot) % 12 == 0)
-            fill(255, 0, 0, opacity);
+          if(!rainbowMode){
+            fill(200, 200, 200, opacity);
+            if (xcord < mouseX + 2 * lengthx / nFrets && xcord > mouseX - 3 * lengthx / nFrets && mouseY < startpointy + lengthy && mouseY > startpointy) 
+              fill(0, 255, 0, opacity);
+            if ((fret + instruments[instrument].get(string) + keyRoot) % 12 == 0)
+              fill(255, 0, 0, opacity);
+          }
+          if(rainbowMode){
+            colorMode(HSB, 360, 100, 100, 255);
+            int saturation = 50;
+            if (xcord < mouseX + 2 * lengthx / nFrets && xcord > mouseX - 3 * lengthx / nFrets && mouseY < startpointy + lengthy && mouseY > startpointy) 
+              saturation = 100;
+            fill((instruments[instrument].get(string) + fret + keyRoot) % 12 *30, saturation, 100, opacity);
+          }
           ellipse(xcord, ycord, 20, 20);
+          colorMode(RGB, 255, 255, 255);
         }
   }
   
@@ -155,7 +165,7 @@
   private int[] notes;
   private String name;
 
-  public NoteSet(int[] notes, String name) {
+    public NoteSet(int[] notes, String name) {
     this.notes = notes;
     this.name = name;
   }
@@ -183,9 +193,9 @@
     return name;
   }
 
-  public void modulate(){
-    mode = (mode - 1 + 7)%7;
-    
+  public void modulate(boolean up){
+    mode = (mode + (up ? 1 : -1) + modes.length)%modes.length;
+    this.name = modes[mode];
     int shift = notes[notes.length - 1];
     for(int i = notes.length - 1; i > 0; i--)
     {  
