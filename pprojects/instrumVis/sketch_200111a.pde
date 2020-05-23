@@ -22,7 +22,7 @@
   String[] allNotes = { "E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D", "D#" };
 
   int scale = 0; // ************CHOOSE YOUR SCALE**********************
-  int keyRoot = 0; // ***CHOSE YOUR KEY, STARTS ON E
+  int keyRoot = 0; // ***CHOSE YOUR KEY, STARTS ON E********
 
   int[] ukeN = { 5, 0, 8, 3 };
   int[] bassN = { 3, 10, 5, 0 };
@@ -141,10 +141,12 @@
         if (scales[scale].containsNote((instruments[instrument].get(string) + fret + keyRoot) % 12)) {
           int xcord = startpointx + (fret - 1)* lengthx / (nFrets - 1) + lengthx / (nFrets * 2);
           int ycord = startpointy + string * lengthy / (instruments[instrument].getLength() - 1);
+          boolean inboundx = xcord < mouseX + 2 * lengthx / nFrets && xcord > mouseX - 3 * lengthx / nFrets;
+          boolean inboundy = mouseY < startpointy + lengthy && mouseY > startpointy;
           int opacity = fret == 0 ? 100 : 255;
           if(!rainbowMode){
             fill(200, 200, 200, opacity);
-            if (xcord < mouseX + 2 * lengthx / nFrets && xcord > mouseX - 3 * lengthx / nFrets && mouseY < startpointy + lengthy && mouseY > startpointy) 
+            if (inboundx && inboundy) 
               fill(0, 255, 0, opacity);
             if ((fret + instruments[instrument].get(string) + keyRoot) % 12 == 0)
               fill(255, 0, 0, opacity);
@@ -152,7 +154,7 @@
           if(rainbowMode){
             colorMode(HSB, 360, 100, 100, 255);
             int saturation = 50;
-            if (xcord < mouseX + 2 * lengthx / nFrets && xcord > mouseX - 3 * lengthx / nFrets && mouseY < startpointy + lengthy && mouseY > startpointy) 
+            if (inboundx && inboundy) 
               saturation = 100;
             fill((instruments[instrument].get(string) + fret + keyRoot) % 12 *30, saturation, 100, opacity);
           }
@@ -207,3 +209,21 @@
       notes[i] =  Math.abs((notes[i] - shift + 12) % 12);
   }
 }
+// private class Instrument extends NoteSet{
+//   private int frets;
+//   private boolean linearFretSpacing;
+//   public Instrument(int[] notes, String name, int frets, boolean linearFretSpacing) {
+//     super(notes, name);
+//     this.frets = frets;
+//     this.linearFretSpacing = linearFretSpacing;
+//   }
+//   public Instrument(int[] notes, String name, int frets) {
+//     this.notes = notes;
+//     this.name = name;
+//     this.frets = frets;
+//   }
+
+//   public Instrument() {
+//     super();
+//   }
+// }
