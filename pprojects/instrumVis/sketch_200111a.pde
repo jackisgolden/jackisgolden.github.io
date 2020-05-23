@@ -209,21 +209,21 @@
       notes[i] =  Math.abs((notes[i] - shift + 12) % 12);
   }
 }
-// private class Instrument extends NoteSet{
-//   private int frets;
-//   private boolean linearFretSpacing;
-//   public Instrument(int[] notes, String name, int frets, boolean linearFretSpacing) {
-//     super(notes, name);
-//     this.frets = frets;
-//     this.linearFretSpacing = linearFretSpacing;
-//   }
-//   public Instrument(int[] notes, String name, int frets) {
-//     this.notes = notes;
-//     this.name = name;
-//     this.frets = frets;
-//   }
+private class Instrument extends NoteSet{
+  private int frets;
+  private boolean linearFretSpacing;
+  public Instrument(int[] notes, String name, int frets, boolean linearFretSpacing) {
+    super(notes, name);
+    this.frets = frets;
+    this.linearFretSpacing = linearFretSpacing;
+  }
+  public Instrument(int[] notes, String name, int frets) {
+    this.notes = notes;
+    this.name = name;
+    this.frets = frets;
+  }
 
-//   public Instrument() {
-//     super();
-//   }
-// }
+  public Instrument() {
+    super();
+  }
+}
