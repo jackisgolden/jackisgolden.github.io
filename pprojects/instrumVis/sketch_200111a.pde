@@ -96,16 +96,27 @@
       line(startpointx, ycord, startpointx + lengthx, ycord);
     }
 
-    for (int fret = 0; fret < nFrets; fret++) {
+    for (int fret = 0; fret < nFrets; fret++) {   //linear render
       int xcord = startpointx + fret * lengthx / (nFrets - 1);
       if (fret == 0) {
         strokeWeight(5);
         line(xcord, startpointy, xcord, startpointy + lengthy);
         strokeWeight(1);
-
       }
       line(xcord, startpointy, xcord, startpointy + lengthy);
     }
+
+  //  double scaleFactor = (double)lengthx / (lengthFromFretToBridge(40) -  lengthFromFretToBridge(40 + nFrets));
+  //    for (int fret = 0; fret < nFrets; fret++) {      //exponential render
+  //     int pitch = fret + 40;
+  //     int xcord = (int)((double)startpointx + (double)lengthx - lengthFromFretToBridge(pitch) * scaleFactor);
+  //     if (fret == 0) {
+  //       strokeWeight(5);
+  //       line(xcord, startpointy, xcord, startpointy + lengthy);
+  //       strokeWeight(1);
+  //     }
+  //     line(xcord, startpointy, xcord, startpointy + lengthy);
+  //   }
 
     int[] markings = { 3, 5, 7, 9, 12, 15, 17, 19, 21 };
     int ycord = startpointy + lengthy / 2;
@@ -161,6 +172,10 @@
           ellipse(xcord, ycord, 20, 20);
           colorMode(RGB, 255, 255, 255);
         }
+  }
+  public double lengthFromFretToBridge(int pitch)
+  {
+      return 108.0 / (440.0 * Math.exp(2,((double)pitch - 69.0)/12.0));
   }
   
   private class NoteSet {
