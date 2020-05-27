@@ -213,13 +213,21 @@
   public void modulate(boolean up){
     mode = (mode + (up ? 1 : -1) + modes.length)%modes.length;
     this.name = modes[mode];
-    int shift = notes[notes.length - 1];
-    for(int i = notes.length - 1; i > 0; i--)
-    {  
-      int temp = notes[i];
-      notes[i] = notes[i - 1];
-      notes[i - 1] = temp;
-    }
+    int shift = notes[up ? notes.length - 1 : 1];
+    if(up)
+      for(int i = notes.length - 1; i > 0; i--) //up
+      {  
+        int temp = notes[i];
+        notes[i] = notes[i - 1];
+        notes[i - 1] = temp;
+      }
+    else
+      for(int i = 0; i < notes.length; i++) //down
+      {  
+        int temp = notes[i];
+        notes[i] = notes[(i  + notes.length - 1)% notes.length];
+        notes[(i  + notes.length - 1)% notes.length] = temp;
+      }
     for(int i = 0; i < notes.length; i++)
       notes[i] =  Math.abs((notes[i] - shift + 12) % 12);
   }
