@@ -3,32 +3,84 @@
 <head>
     <title>Home | Jack Golden</title>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/pixilGreen.png" />
 </head>
 <body>
     <div id="container">
         <div id="header">
-            <h1>Jack Golden</h1>
-        </div>
-        <div id ="nav_bar">
-            <nav>
-                <ul>
-                    <li><a class="selected" href="#">Home</a></li>
-                    <li><a href="pprojects/pprojects.html">Projects</a></li>
-                    <li><a href="mcserver/mcserver.html">Minecraft Server</a></li>
-                    <li><a href="contact/contact.html">Contact</a></li>
-                </ul>
-            </nav>
+            <div id ="nav_bar">
+                    <nav>
+                        <ul>
+                            <li>Jack Golden</li>
+                            <li><a class="selected "href="">Home</a></li>
+                            <!-- <li><a href="pprojects/pprojects.html">Projects</a></li> -->
+                            <li><a href="contact/contact.html">Contact</a></li>
+                            <li>
+                                    <a href="https://www.linkedin.com/in/jackgoldn/">
+                                        <img src="assets/linkedin.svg">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/jackisgolden">
+                                        <img src="assets/github.svg">
+                                    </a>
+                                </li>
+                        </ul> 
+                    </nav>
+                </div>
         </div>
         <div id="content">
-            <h2>Home</h2>
-            <p>There's nothing here yet. I just made a home page for fun. Click on programming projects.</p>
-            <p>Some background information: I coded this site using HTML and css. The programming projects are coded using the Processing and P5.JS libraries</p>
-            <p>Source code found <a href="https://github.com/jackisgolden/jackisgolden.github.io">here</a>
-            </p>
+            <h2>About</h2>
+            <p>I coded this site using HTML, css, and JavaScript.</p>
+            <p>Projects are made with processing and p5.JS</p>
+            <p><a href="https://github.com/jackisgolden/jackisgolden.github.io">Source code</a></p>
+            <h2>Projects</h2>
+            <div class="carousel">
+                <div class="carousel_track_container">
+                    <nav>
+                        <ul class="carousel_track">
+                                
+                            <li class="carousel_slide current_slide">
+                                <a href="pprojects/flower/flower.html">
+                                    <img class="carousel_image" alt="Flower" src="assets/flowerPreview.png">
+                                </a>
+                            </li>
+                            <li class="carousel_slide">
+                                    <a href="pprojects/linear/linear.html">
+                                        <img class="carousel_image" alt="Linear Algebra" src="assets/linearPreview.png">
+                                    </a>
+                            </li>
+                            <li class="carousel_slide">
+                                    <a href="pprojects/instrumVis/instrum.html">
+                                        <img class="carousel_image" alt="Qries" src="assets/instrumPreview.png">
+                                    </a>
+                            </li>
+                            <li class="carousel_slide">
+                                    <a href="pprojects/noise1/noise1.html">
+                                        <img class="carousel_image" alt="Qries" src="assets/noisePreview.png">
+                                    </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <button class="carousel_button carousel_button_left">
+                    <img src="assets/arrow-left.svg" alt="" class='is-hidden'>
+                </button>
+                <button class="carousel_button carousel_button_right">
+                     <img src="assets/arrow-right.svg" alt="">
+                </button>
+                <div class="carousel_nav">
+                    <button class="carousel_indicator current_slide"></button>
+                    <button class="carousel_indicator"></button>
+                    <button class="carousel_indicator"></button>
+                    <button class="carousel_indicator"></button>
+                </div>
+            </div>
         </div>
         <div id="footer">
             jackgoldn@gmail.com         Copyright &copy; 2020 Jack Golden.
         </div>
     </div>
+    <script src="carousel.js"></script>
 </body>
 </html>

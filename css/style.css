@@ -1,76 +1,158 @@
-body{
-    background-color: #f1ebe1;
-    font-family: Arial, Helvetica, sans-serif;
+body {
+	background-color: #b5b5b5;
+	font-family: Arial, Helvetica, sans-serif;
 }
-#container{
-    background-color: white;
-    /* width: 80%; */
-    /* min-width: 600px; */
-    width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+#container {
+	background-color: white;
+	/* width: 80%; */
+	/* min-width: 600px; */
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 }
-#header{
-    background-color: #c0cfb2;
-    padding: 5px;
-    color: white;
-    text-align: center;
+#header {
+	background-color: #303030;
+	width: 100%;
+	height: 40px;
+	color: white;
+	text-align: left;
+	/* display: flex; */
+	justify-content: center;
 }
-#nav_bar{
-    background-color: #c0cfb2;
-    padding: 2px;
-    color: white;
-    text-align: center;
+#nav_bar {
+	background-color: #303030;
+	color: white;
+	text-align: center;
+	position: relative;
 }
-#content{
-    padding: 10px;
+
+#content {
+	padding: 10px;
 }
-#codeSketch{
-    margin: 10px;
-    display: flex;
-  
-    /* This centers our sketch horizontally. */
-    justify-content: center;
-  
-    /* This centers our sketch vertically. */
-    align-items: center;
+#codeSketch {
+	margin: 10px;
+	display: flex;
+
+	/* This centers our sketch horizontally. */
+	justify-content: center;
+
+	/* This centers our sketch vertically. */
+	align-items: center;
 }
-#footer{
-    background-color: #999999;
-    color: white;
-    text-align: right;
-    padding-right: 5px;
+#footer {
+	background-color: #999999;
+	color: white;
+	text-align: right;
+	padding-right: 5px;
 }
-h2{
-    color: #44624a;
+h1 {
+	font-size: 1.5rem;
+	margin: 5px;
+	padding: 10px;
 }
-#content nav li{
-    font-weight: 100;
-    line-height: 1.5;
-    font-size: 1.5rem;
+h2 {
+	color: #44624a;
+	align-content: center;
 }
-#content nav li a:link{ color: #4abd2d;}
-#content nav li a:hover{ color: #44624a;}
-#content nav li a:visited{color: #c0cfb2;}
-#content nav li a.nav_bar:link{
-    color: black;
+#content nav li {
+	font-weight: 100;
+	line-height: 1.5;
+	font-size: 1.5rem;
 }
-#nav_bar ul
-{
-    width: auto;
+#content nav li a:link {
+	color: #4abd2d;
 }
-#nav_bar li{
-    display: inline-block;
-    padding: 0 15px;
-    text-transform: uppercase;
+#content nav li a:hover {
+	color: #44624a;
 }
-#nav_bar li a{
-    text-decoration: none;
-    color: white;
+#content nav li a:visited {
+	color: #c0cfb2;
 }
-#nav_bar li a:hover{
-    color:rgb(54, 30, 30);
+#content nav li a.nav_bar:link {
+	color: black;
 }
-.nav .selected{
-    color: #eb9b34;
+#nav_bar ul {
+	width: auto;
+}
+#nav_bar li {
+	display: inline-block;
+	padding: 0 15px;
+	text-transform: uppercase;
+}
+#nav_bar li a {
+	text-decoration: none;
+	color: white;
+}
+#nav_bar li a:hover {
+	color: rgb(54, 30, 30);
+}
+#nav_bar .selected {
+	/* color: #eb9b34; */
+	color: #2a8532;
+}
+.carousel {
+	position: relative;
+	height: 400px;
+	width: 60%;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+.carousel_image {
+	width: 100%;
+	object-fit: cover;
+}
+.carousel_track_container {
+	background: lightgreen;
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+}
+.carousel_track {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	position: relative;
+	height: 100%;
+	transition: transform 250ms ease-in;
+}
+.carousel_slide {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+}
+.carousel_button {
+	position: absolute;
+	top: 50%;
+	transform: traslateY(50%);
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+}
+.carousel_button_left {
+	left: -30px;
+}
+.carousel_button_right {
+	right: -30px;
+}
+.carousel_nav {
+	display: flex;
+	justify-content: center;
+	padding: 10px 0;
+}
+.carousel_indicator {
+	border: 0;
+	border-radius: 50%;
+	width: 10px;
+	height: 10px;
+	background: rgba(0, 0, 0, .2);
+	margin: 0 8px;
+	cursor: pointer;
+}
+
+.carousel_indicator.current_slide {
+	background: rgba(0, 0, 0, 0.85);
+}
+.backbutton {
+	fill: white;
 }
