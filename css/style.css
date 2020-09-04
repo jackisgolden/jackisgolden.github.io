@@ -16,8 +16,8 @@ body {
 	height: 40px;
 	color: white;
 	text-align: left;
-	/* display: flex; */
-	justify-content: center;
+	display: flex;
+	justfiy-content: center;
 }
 #nav_bar {
 	background-color: #303030;
