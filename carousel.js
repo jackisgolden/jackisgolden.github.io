@@ -51,7 +51,6 @@ dotsNav.addEventListener('click', (e) => {
 	const targetSlide = slides[targetIndex];
 
 	moveToSlide(track, currentSlide, targetSlide);
-
 	updateDots(currentDot, targetDot);
 
 	if (targetIndex === 0) {
