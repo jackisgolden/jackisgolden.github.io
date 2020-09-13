@@ -157,7 +157,7 @@ h2 {
 	fill: white;
 }
 
-li a:hover {
+.carousel_track li a:hover {
 	filter: blur(8px);
 	-webkit-filter: blur(8px);
 }
