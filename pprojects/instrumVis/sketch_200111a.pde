@@ -1,12 +1,12 @@
 
-  int[] majors = { 0, 2, 4, 5, 7, 9, 11 };
-  int[] minors = { 0, 2, 3, 5, 7, 8, 10 };
-  int[] minorp = { 0, 3, 5, 7, 10 };
-  int[] majorp = { 0, 2, 5, 7, 9 }; // these are rootless shapes. shift to align with different roots on guitar..
-  int[] majorc = { 0, 4, 7 };
-  int[] minorc = { 0, 3, 7 };
-  int[] chromatics = {0,1,2,3,4,5,6,7,8,9,10,11};
-  int[] root = { 0 };
+  public static final int[] majors = { 0, 2, 4, 5, 7, 9, 11 };
+  public static final int[] minors = { 0, 2, 3, 5, 7, 8, 10 };
+  public static final int[] minorp = { 0, 3, 5, 7, 10 };
+  public static final int[] majorp = { 0, 2, 5, 7, 9 }; // these are rootless shapes. shift to align with different roots on guitar..
+  public static final int[] majorc = { 0, 4, 7 };
+  public static final int[] minorc = { 0, 3, 7 };
+  public static final int[] chromatics = {0,1,2,3,4,5,6,7,8,9,10,11};
+  public static final int[] root = { 0 };
   int[] ionians = { 0, 2, 4, 5, 7, 9, 11 };
 
   NoteSet majorScale = new NoteSet(majors, "Major Scale");
@@ -18,18 +18,18 @@
   NoteSet chromaticScale = new NoteSet(chromatics, "Chromatic scale");
   NoteSet ionian =  new NoteSet(ionians, "Ionian");
 
-  NoteSet[] scales = { majorScale, minorScale, majorPent, minorPent, majorChord, minorChord, chromaticScale, ionian};
-  String[] allNotes = { "E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D", "D#" };
+  public static final NoteSet[] scales = { majorScale, minorScale, majorPent, minorPent, majorChord, minorChord, chromaticScale, ionian};
+  public static final String[] allNotes = { "E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C#", "D", "D#" };
 
   int scale = 0; // ************CHOOSE YOUR SCALE**********************
   int keyRoot = 0; // ***CHOSE YOUR KEY, STARTS ON E********
 
-  int[] ukeN = { 5, 0, 8, 3 };
-  int[] bassN = { 3, 10, 5, 0 };
-  int[] guitarN = { 0, 7, 3, 10, 5, 0 }; // in reverse order because processing renders positive y downwards
-  int[] banjoN = {11, 10 ,3, 7, 10};
-  int[] linnstrN= {0, 5, 10, 3, 8, 1, 6, 11};      //has 25 columns to play
-  int[] harpejjN = { 5, 7, 9, 11, 1, 3, 5, 7, 9, 11, 1, 3, 5, 7, 9, 11, 1, 3, 5, 7, 9,11, 1, 3};
+  public static final int[] ukeN = { 5, 0, 8, 3 };
+  public static final int[] bassN = { 3, 10, 5, 0 };
+  public static final int[] guitarN = { 0, 7, 3, 10, 5, 0 }; // in reverse order because processing renders positive y downwards
+  public static final int[] banjoN = {11, 10 ,3, 7, 10};
+  public static final int[] linnstrN= {0, 5, 10, 3, 8, 1, 6, 11};      //has 25 columns to play
+  public static final int[] harpejjN = { 5, 7, 9, 11, 1, 3, 5, 7, 9, 11, 1, 3, 5, 7, 9, 11, 1, 3, 5, 7, 9,11, 1, 3};
 
   NoteSet guitar = new NoteSet(guitarN, "Guitar");
   NoteSet bass = new NoteSet(bassN, "Bass");
@@ -43,7 +43,7 @@
 
   int startpointx, startpointy, lengthx, lengthy, nFrets; // 17 frets, 5 strings.
 
-  String[] modes = {"Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian"};
+  public static final String[] modes = {"Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian"};
   int mode = 0;
 
   boolean rainbowMode = false;
@@ -211,25 +211,27 @@
   }
 
   public void modulate(boolean up){
-    mode = (mode + (up ? 1 : -1) + modes.length)%modes.length;
+    mode = (mode + (up ? 1  : -1) + modes.length)%modes.length;
     this.name = modes[mode];
-    int shift = notes[up ? notes.length - 1 : 1];
-    if(up)
+    int shift = notes[up ? 1 : notes.length - 1];
+    if(up){
       for(int i = notes.length - 1; i > 0; i--) //up
       {  
         int temp = notes[i];
         notes[i] = notes[i - 1];
         notes[i - 1] = temp;
       }
-    else
+    }
+    else {
       for(int i = 0; i < notes.length; i++) //down
       {  
         int temp = notes[i];
         notes[i] = notes[(i  + notes.length - 1)% notes.length];
         notes[(i  + notes.length - 1)% notes.length] = temp;
       }
+    }
     for(int i = 0; i < notes.length; i++)
-      notes[i] =  Math.abs((notes[i] - shift + 12) % 12);
+      notes[i] =  (notes[i] - shift + 12) % 12;
   }
 }
 private class Instrument extends NoteSet{

@@ -102,7 +102,7 @@ h2 {
 	object-fit: cover;
 }
 .carousel_track_container {
-	background: lightgreen;
+	background: white;
 	position: relative;
 	height: 100%;
 	overflow: hidden;
@@ -155,4 +155,9 @@ h2 {
 }
 .backbutton {
 	fill: white;
+}
+
+li a:hover {
+	filter: blur(8px);
+	-webkit-filter: blur(8px);
 }
