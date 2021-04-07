@@ -8,6 +8,9 @@ const dots = Array.from(dotsNav.children);
 const slideSize = slides[0].getBoundingClientRect();
 const slideWidth = slideSize.width;
 
+slides[0].classList.add('first');
+slides[slides.length - 1].classList.add('last');
+
 const setSlidePosition = (slide, i) => {
 	slide.style.left = slideWidth * i + 'px';
 };
@@ -18,40 +21,47 @@ const moveToSlide = (track, currentSlide, targetSlide) => {
 	currentSlide.classList.remove('current_slide');
 	targetSlide.classList.add('current_slide');
 };
+
 const updateDots = (currentDot, targetDot) => {
 	currentDot.classList.remove('current_slide');
 	targetDot.classList.add('current_slide');
 };
-const updateArrows = (targetSldie) => {
-	if (targetSlide == null) {
-		return;
-	} else {
-		if (targetSlide.nextElementSibling == null) {
-			nextButton.classList.add('is-hidden');
-		} else if (targetSlide.previousElementSibling == null) {
-			prevButton.classList.add('is-hidden');
-		}
+
+const updateArrows = (targetSlide) => {
+	if (targetSlide.classList.contains('first')) {
+		prevButton.classList.add('is-hidden');
+	} else if (targetSlide.classList.contains('last')) {
+		nextButton.classList.add('is-hidden');
+	}
+
+	if (!targetSlide.classList.contains('first')) {
+		prevButton.classList.remove('is-hidden');
+	}
+	if (!targetSlide.classList.contains('last')) {
+		nextButton.classList.remove('is-hidden');
 	}
 };
-nextButton.addEventListener('click', (e) => {
-	const currentSlide = track.querySelector('.current_slide');
-	const nextSlide = currentSlide.nextElementSibling;
-	const currentDot = dotsNav.querySelector('.current_slide');
-	const nextDot = currentDot.nextElementSibling;
-	moveToSlide(track, currentSlide, nextSlide);
-	updateDots(currentDot, nextDot);
-	updateArrows(nextSlide);
-});
 
-prevButton.addEventListener('click', (e) => {
+function btnClick(e) {
 	const currentSlide = track.querySelector('.current_slide');
-	const prevSlide = currentSlide.previousElementSibling;
 	const currentDot = dotsNav.querySelector('.current_slide');
-	const prevDot = currentDot.previousElementSibling;
-	moveToSlide(track, currentSlide, prevSlide);
-	updateDots(currentDot, prevDot);
-	updateArrows(prevSlide);
-});
+	let targetSlide;
+
+	if (e.currentTarget.classList.contains('carousel_button_right')) {
+		targetSlide = currentSlide.nextElementSibling;
+		targetDot = currentDot.nextElementSibling;
+	} else {
+		targetSlide = currentSlide.previousElementSibling;
+		targetDot = currentDot.previousElementSibling;
+	}
+	moveToSlide(track, currentSlide, targetSlide);
+	updateDots(currentDot, targetDot);
+	updateArrows(targetSlide);
+}
+
+nextButton.addEventListener('click', btnClick, false);
+
+prevButton.addEventListener('click', btnClick, false);
 
 dotsNav.addEventListener('click', (e) => {
 	const targetDot = e.target.closest('button');
@@ -64,6 +74,5 @@ dotsNav.addEventListener('click', (e) => {
 
 	moveToSlide(track, currentSlide, targetSlide);
 	updateDots(currentDot, targetDot);
-
-	updateArrows();
+	updateArrows(targetSlide);
 });

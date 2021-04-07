@@ -1,29 +1,41 @@
+html {
+	font-family: "Open Sans", sans-serif;
+}
+
+
 body {
 	background-color: white;
-	font-family: sans-serif, Arial, Helvetica;
+	margin: 0;
+	padding: 0;
 }
+
 #container {
 	background-color: white;
-	/* width: 80%; */
 	/* min-width: 600px; */
 	width: 66%;
 	margin-left: auto;
 	margin-right: auto;
 }
+
 #header {
 	background-color: #303030;
 	width: 100%;
 	height: 40px;
 	color: white;
-	/* text-align: left;
-	display: flex; */
+	padding: 10px 200px;
+	text-align: center;
+	display: flex;
 }
+
+#header>a {
+	display: inline;
+}
+
 #nav_bar {
-	background-color: #303030;
 	color: white;
 	text-align: center;
 	position: relative;
-
+	border: 0;
 	/* This centers our sketch horizontally. */
 	/* justify-content: center; */
 	/* This centers our sketch vertically. */
@@ -33,6 +45,7 @@ body {
 #content {
 	padding: 10px;
 }
+
 #codeSketch {
 	margin: 10px;
 	display: flex;
@@ -43,56 +56,71 @@ body {
 	/* This centers our sketch vertically. */
 	align-items: center;
 }
+
 #footer {
 	background-color: white;
 	color: black;
 	text-align: right;
 	padding-right: 5px;
+	font-size: 0.5rem;
 }
+
 h1 {
 	margin: 5px;
 	padding: 10px;
 }
+
 h2 {
-	color: #44624a;
+	color: #2a8532;
 	align-content: center;
 }
+
 #content nav li {
 	font-weight: 100;
 	line-height: 1.5;
 	font-size: 1.5rem;
 }
+
 #content nav li a:link {
 	color: #4abd2d;
 }
+
 #content nav li a:hover {
 	color: #44624a;
 }
+
 #content nav li a:visited {
 	color: #c0cfb2;
 }
+
 #content nav li a.nav_bar:link {
 	color: black;
 }
+
 #nav_bar ul {
 	width: auto;
 }
+
 #nav_bar li {
 	display: inline-block;
 	padding: 0 15px;
 	text-transform: uppercase;
 }
+
 #nav_bar li a {
 	text-decoration: none;
 	color: white;
 }
+
 #nav_bar li a:hover {
 	color: rgb(54, 30, 30);
 }
+
 #nav_bar .selected {
 	/* color: #eb9b34; */
 	color: #2a8532;
 }
+
 .carousel {
 	position: relative;
 	height: 400px;
@@ -100,16 +128,19 @@ h2 {
 	margin: 0 auto;
 	margin-bottom: 20px;
 }
+
 .carousel_image {
 	width: 100%;
 	object-fit: cover;
 }
+
 .carousel_track_container {
 	background: white;
 	position: relative;
 	height: 100%;
 	overflow: hidden;
 }
+
 .carousel_track {
 	padding: 0;
 	margin: 0;
@@ -118,12 +149,14 @@ h2 {
 	height: 100%;
 	transition: transform 250ms ease-in;
 }
+
 .carousel_slide {
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	width: 100%;
 }
+
 .carousel_button {
 	position: absolute;
 	top: 50%;
@@ -132,20 +165,25 @@ h2 {
 	border: 0;
 	cursor: pointer;
 }
-.carousel_button .is-hidden {
+
+.is-hidden {
 	visibility: hidden;
 }
+
 .carousel_button_left {
 	left: -30px;
 }
+
 .carousel_button_right {
 	right: -30px;
 }
+
 .carousel_nav {
 	display: flex;
 	justify-content: center;
 	padding: 10px 0;
 }
+
 .carousel_indicator {
 	border: 0;
 	border-radius: 50%;
@@ -159,6 +197,7 @@ h2 {
 .carousel_indicator.current_slide {
 	background: rgba(0, 0, 0, 0.85);
 }
+
 .backbutton {
 	fill: white;
 }
