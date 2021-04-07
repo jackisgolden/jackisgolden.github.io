@@ -22,7 +22,17 @@ const updateDots = (currentDot, targetDot) => {
 	currentDot.classList.remove('current_slide');
 	targetDot.classList.add('current_slide');
 };
-const updateArrows = (index, length) => {};
+const updateArrows = (targetSldie) => {
+	if (targetSlide == null) {
+		return;
+	} else {
+		if (targetSlide.nextElementSibling == null) {
+			nextButton.classList.add('is-hidden');
+		} else if (targetSlide.previousElementSibling == null) {
+			prevButton.classList.add('is-hidden');
+		}
+	}
+};
 nextButton.addEventListener('click', (e) => {
 	const currentSlide = track.querySelector('.current_slide');
 	const nextSlide = currentSlide.nextElementSibling;
@@ -30,6 +40,7 @@ nextButton.addEventListener('click', (e) => {
 	const nextDot = currentDot.nextElementSibling;
 	moveToSlide(track, currentSlide, nextSlide);
 	updateDots(currentDot, nextDot);
+	updateArrows(nextSlide);
 });
 
 prevButton.addEventListener('click', (e) => {
@@ -39,6 +50,7 @@ prevButton.addEventListener('click', (e) => {
 	const prevDot = currentDot.previousElementSibling;
 	moveToSlide(track, currentSlide, prevSlide);
 	updateDots(currentDot, prevDot);
+	updateArrows(prevSlide);
 });
 
 dotsNav.addEventListener('click', (e) => {
@@ -53,11 +65,5 @@ dotsNav.addEventListener('click', (e) => {
 	moveToSlide(track, currentSlide, targetSlide);
 	updateDots(currentDot, targetDot);
 
-	if (targetIndex === 0) {
-		prevButton.classList.add('is-hidden');
-		nextButton.classList.remove('is-hidden');
-	} else if (targetIndex === slides.length - 1) {
-		nextButton.classList.add('is-hidden');
-		prevButton.classList.remove('is-hidden');
-	}
+	updateArrows();
 });
