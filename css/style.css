@@ -1,32 +1,43 @@
-html {
-	font-family: "Open Sans", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+* {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 600;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
 }
 
 body {
 	background-color: white;
-	margin: 0;
-	padding: 0;
+	width: 100%;
+	margin: auto;
 }
 
 #container {
 	height: 100%;
-	width: 100%;
+	width: 50%;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 #header {
-	background-color: #d7d7d7;
+	background-color: #02210f;
+	padding: 0 100px;
 	width: 100%;
 	height: 80px;
 	color: white;
-	text-align: center;
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
-#header > img {
+
+#header>img {
 	scale: 50%;
 }
-#header > a {
+
+#header>a {
 	display: inline;
 }
 
@@ -35,24 +46,12 @@ body {
 	text-align: center;
 	position: relative;
 	border: 0;
-	/* This centers our sketch horizontally. */
-	/* justify-content: center; */
-	/* This centers our sketch vertically. */
-	/* align-items: center; */
 }
 
-#about {
-	background-color: #05763e;
-	grid-column: 1;
-	color: white;
-}
 
-#about > h2 {
-	color: white;
-}
 
 #content {
-	display: grid;
+	/*display: grid;*/
 	height: 100%;
 }
 
@@ -72,7 +71,6 @@ body {
 }
 
 #footer {
-	background-color: white;
 	color: black;
 	text-align: right;
 	padding-right: 5px;
@@ -80,13 +78,21 @@ body {
 }
 
 h1 {
-	margin: 5px;
-	padding: 10px;
+	font-size: 3.5em;
+	margin: 5px 0 0 0;
+	padding: 10px 0 0 0;
 }
 
 h2 {
 	color: #05763e;
+	font-size: 3em;
 	align-content: center;
+	padding: 10px 0 0 0;
+}
+
+p {
+	font-size: 1.1em;
+	padding: 0 10px;
 }
 
 #content nav li {
