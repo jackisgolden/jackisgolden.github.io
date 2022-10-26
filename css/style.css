@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
+@font-face {
+	font-family: Coolvetica;
+	src: url("../assets/coolvetica/coolvetica\ rg.otf");
+	/* EOT file for IE */
+}
+
 * {
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Coolvetica', sans-serif;
 	font-weight: 600;
 	box-sizing: border-box;
 	margin: 0;
@@ -47,8 +53,6 @@ body {
 	position: relative;
 	border: 0;
 }
-
-
 
 #content {
 	/*display: grid;*/
