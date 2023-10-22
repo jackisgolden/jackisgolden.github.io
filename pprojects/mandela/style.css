@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    padding: 20px;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 80px);
+    padding: 80px 50px;
+    box-sizing: border-box;
+}
+
+#canvas-container {
+    flex: 1;
+    height: 600px;
+    width: 600px;
+    background-color: #eee;
+    box-shadow: 0px 2px 5px 0px green;
+}
+
+#canvas {
+}
+
+.card {
+    flex: 1;
+    box-shadow: 0px 2px 5px 0px green;
+    margin: 5px;
+    margin-left: 50px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.card h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 3px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #555;
+}

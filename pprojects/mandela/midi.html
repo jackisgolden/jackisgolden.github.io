@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Play C Major Scale with MIDI Web API</title>
+  </head>
+  <body>
+    <h1>Play C Major Scale with MIDI Web API</h1>
+    <p>Click the button to play the C major scale:</p>
+    <button onclick="playCMajorScale()">Play</button>
+    <script>
+      function playCMajorScale() {
+        // request access to the MIDI system
+        navigator.requestMIDIAccess()
+          .then(function(midiAccess) {
+            // get the list of available MIDI output devices
+            var outputs = midiAccess.outputs.values();
+            // get the first available output device
+            var output = outputs.next().value;
+            // send the note on and note off messages for each note in the C major scale
+            var notes = [60, 62, 64, 65, 67, 69, 71];
+            var velocity = 127;
+            var duration = 500; // in milliseconds
+            for (var i = 0; i < notes.length; i++) {
+              // send a note on message
+              output.send([0x90, notes[i], velocity]);
+              // wait for the specified duration
+              setTimeout(function(note) {
+                // send a note off message
+                output.send([0x80, note, velocity]);
+              }, duration * i, notes[i]);
+            }
+          })
+          .catch(function(error) {
+            console.error(error);
+          });
+      }
+    </script>
+  </body>
+</html>
+
+
