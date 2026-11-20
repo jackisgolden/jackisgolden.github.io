@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Black Box Machinery | Jack Golden</title>
+    <meta name="description" content="What Grothendieck and Erdős would say about a proof of the Riemann Hypothesis nobody can read yet." />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/jg64.png" />
+    <style>
+        article { padding: 0 3ch 2ch; line-height: 1.55; }
+        article p, article li { font-size: 1rem; }
+        article h1 { font-size: 2em; margin-bottom: 0.2em; }
+        article h2 { margin-top: 2em; }
+        article .date { color: #555; font-size: 0.85rem; margin-top: 0; }
+        article blockquote { margin: 1.2em 0; padding-left: 1.5ch; border-left: 1px solid black; }
+        article blockquote p { font-style: italic; }
+        article cite { display: block; font-size: 0.85rem; font-style: normal; color: #555; }
+        article .sources li { font-size: 0.85rem; margin-bottom: 0.4em; }
+        @media (max-width: 800px) { #container { width: auto; margin: 16px; } article { padding: 0 1.5ch 2ch; } }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="nav_bar">
+                <nav>
+                    <ul>
+                        <li><a href="/">jackgolden</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div id="content">
+            <hr>
+            <article>
+                <h1>Black Box Machinery</h1>
+                <p class="date">November 20, 2026</p>
+
+                <h2>The machine</h2>
+
+                <p>I researched what my favorite mathematicians would say about a math problem represented by a 14-part archive of machine-checked code. There's a general consensus that a proof doesn't "count" until it is elegant, compact, and human interpretable. Their standard was set decades before AI, and it warns against black box machinery.</p>
+
+                <p>The paper announces a proof of the Riemann Hypothesis, built with Claude and formalized in Lean. The method goes further and resolves the Generalized Riemann Hypothesis. It looks like the paper took a brute force approach, and in order to unify math, it needs to yield geometric interpretation rather than a black box forced proof.</p>
+
+                <p>It is still a major accomplishment, because it confirms many things. And yet it's weak in many ways. It offers no way for humans to discuss the base proof. The author says so:</p>
+
+                <blockquote>
+                    <p>"I am presenting the world with a complete argument before having mastered a massive neighbourhood around its mathematics."</p>
+                </blockquote>
+
+                <p>The natural-language export ran past 250,000 pages. The author called it a "massive unreadable travesty of 'slop'" and released only the Lean.</p>
+
+                <h2>The nut and the ocean</h2>
+
+                <p>Grothendieck would say "you cracked the nut, but missed the ocean," meaning the proof gives us certainty, but not understanding.</p>
+
+                <p>He described two ways to open a nut. One is the hammer and chisel. The other is to soak it, and wait. In <i>Récoltes et Semailles</i> he called it the rising sea:</p>
+
+                <blockquote>
+                    <p>"The unknown thing to be known appeared to me as some stretch of earth or hard marl, resisting penetration... the sea advances insensibly in silence, nothing seems to happen, nothing moves, the water is so far off you hardly hear it... yet it finally surrounds the resistant substance."</p>
+                    <cite>Grothendieck, <i>Récoltes et Semailles</i>, trans. Colin McLarty</cite>
+                </blockquote>
+
+                <blockquote>
+                    <p>"When the time is ripe, hand pressure is enough, the shell opens like a perfectly ripened avocado!"</p>
+                    <cite>ibid.</cite>
+                </blockquote>
+
+                <p>Grothendieck's vision would be to construct the raw definitions that lead us to a small proof. The lack of geometric interpretation makes this a weak proof. He'd say it's an indicator that human language for discussing math is still primitive and insufficient for understanding the problem. For the Riemann Hypothesis, it means we still lack intuition on prime numbers.</p>
+
+                <p>Even the author expects the hammer to be put down:</p>
+
+                <blockquote>
+                    <p>"My intuition insists it will be massively simplified, likely immediately."</p>
+                </blockquote>
+
+                <h2>Stealing pages from God's book</h2>
+
+                <p>Erdős, a very eccentric mathematician, believed mathematics was "The Book," a book of compact, elegant proofs written by God and kept from mathematicians. As he put it:</p>
+
+                <blockquote>
+                    <p>"You don't have to believe in God, but you should believe in The Book."</p>
+                    <cite>Paul Erdős</cite>
+                </blockquote>
+
+                <p>He believed God already wrote this book and that by discovering math we are deciphering it. He devoted himself to writing proofs, which he saw as stealing pages from God's secret book.</p>
+
+                <p>Claude called the 250,000-page export the GRH "book." Its Theorem 1 begins by noting that because the reals are totally ordered, if σ ≠ 1/2 then σ &gt; 1/2 or σ &lt; 1/2.</p>
+
+                <p>That is not a page from The Book.</p>
+
+                <h2>Benevolence or drowning</h2>
+
+                <p>Erdős only counted proofs that were compact, interpretable, and elegant. He would believe we have literally invented God if AI can generate increasingly complex, compact proofs in an interpretable manner. AI has not yet done that, though this may be a signal for it.</p>
+
+                <p>Under that lens, he would believe God to be benevolent if humans stay coupled with proof interpretation. And he would believe God had drowned us if we are to increasingly decouple from math.</p>
+
+                <h2>Dreaming the language</h2>
+
+                <p>It's like humanity just leaped up a rung on the busy beavers. The black box has flooded and has not yet been synchronized to humans.</p>
+
+                <p>The true unification of fields doesn't happen until we as humans dream the language. Or perhaps AI will enter our dreams.</p>
+
+                <p>We must set sail. We must synchronize.</p>
+
+                <hr>
+                <ul class="sources">
+                    <li>The announcement: <a href="https://alpo.ge/remark.pdf">alpo.ge/remark.pdf</a>. The Lean archive is linked from its first footnote. Not yet independently checked at the time of writing.</li>
+                    <li>Colin McLarty, "The Rising Sea: Grothendieck on simplicity and generality" (2007), for the translations of <i>Récoltes et Semailles</i>.</li>
+                    <li>Paul Hoffman, <i>The Man Who Loved Only Numbers</i> (1998), and Aigner &amp; Ziegler, <i>Proofs from THE BOOK</i>, for Erdős and The Book.</li>
+                </ul>
+            </article>
+        </div>
+        <div id="footer">
+            Copyright &copy; 2026 Jack Golden.
+        </div>
+    </div>
+</body>
+
+</html>
